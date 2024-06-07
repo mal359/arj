@@ -10,11 +10,11 @@
 #ifdef ELF_EXECUTABLES
  #ifdef __QNXNTO__
     #include <libelf.h>
- #elif __OpenBSD__
-    #include <sys/exec_elf.h>
+ #elif defined (__OpenBSD__)
+    #include <elf_abi.h>
  #else
     #include <elf.h>
- #endif /* __QNXNTO__ */
+ #endif
 #endif
 
 DEBUGHDR(__FILE__)                      /* Debug information block */

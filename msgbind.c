@@ -578,7 +578,7 @@ int main(int argc, char **argv)
    }
    strcat(pool[tpool].data, msgname);
    strcat(pool[tpool].data, ", ");
-   safe_strcpy(msg_buffer, msg_buffer+1);
+   memmove(msg_buffer, msg_buffer+1, strlen(msg_buffer));
    buf_len=strlen(msg_buffer);
    msg_buffer[--buf_len]='\0';
    patch_string(msg_buffer);

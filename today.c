@@ -1,5 +1,5 @@
 /*
- * $Id: today.c,v 1.3 2003/06/22 11:12:28 andrew_belov Exp $
+ * $Id: today.c,v 1.4 2005/10/30 13:34:56 andrew_belov Exp $
  * ---------------------------------------------------------------------------
  * A utility to produce locale-dependent timestamps instead of __TIME__.
  *
@@ -9,6 +9,7 @@
 #include "filemode.h"
 
 #include <time.h>
+#include <stdlib.h>
 
 /* Date array */
 
@@ -21,6 +22,7 @@ int main(int argc, char **argv)
 {
  char date_sig[40], f_date[120];
  char out_name[CCHMAXPATH];
+ char *source_date_epoch;
  time_t cur_unixtime;
  struct tm *stm;
  FILE *stream;
@@ -28,7 +30,7 @@ int main(int argc, char **argv)
  char *p;
  int l;
 
- printf("TODAY v 1.22  [29/10/2000]  Not a part of any binary package!\n\n");
+ printf("TODAY v 1.22  [29/10/2000]  ARJ helper tool\n\n");
  if(argc<3)
  {
   printf("Usage: TODAY <locale> <base_dir>\n"
@@ -44,8 +46,12 @@ int main(int argc, char **argv)
   out_name[++l]='\0';
  }
  strcat(out_name, "date_sig.c");
- cur_unixtime=time(NULL);
- stm=localtime(&cur_unixtime);
+ /* This assumes that the SOURCE_DATE_EPOCH environment variable will contain
+    a correct, positive integer in the time_t range */
+ if((source_date_epoch = getenv("SOURCE_DATE_EPOCH")) == NULL ||
+   (cur_unixtime=(time_t)strtoll(source_date_epoch, NULL, 10)) <= 0)
+    cur_unixtime=time(NULL);
+ stm=gmtime(&cur_unixtime);
  if(!stricmp(argv[1], "en"))
   sprintf(date_sig, "[%02d %s %04d]", stm->tm_mday, months_en[stm->tm_mon], stm->tm_year+1900);
  else if(!stricmp(argv[1], "fr"))

@@ -114,7 +114,7 @@
 #endif
 #if COMPILER==BCC
  #include <dir.h>
-#elif COMPILER!=GCC && !defined(SUNOS)
+#elif COMPILER!=GCC && !defined(SUNOS) && !defined(_AIX)
  #include <direct.h>
 #endif
 

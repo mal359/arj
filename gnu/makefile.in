@@ -276,8 +276,7 @@ ARJCRYPT_OBJS = $(patsubst %,$(ARJCRYPT_DIR)/%, \
 $(ARJCRYPT_DIR)/arjcrypt$d: $(ARJCRYPT_OBJS) $(TOOLS_DIR)/postproc$x
 	$(CC) $(ALL_CFLAGS) $(DLL_FLAGS) -o $@ $(ARJCRYPT_OBJS) $(ARJCRYPT_DEF) $(LIBS)
 	$(STRIP) $@
-	$(TOOLS_DIR)/postproc $@
-
+	
 $(BASEDIR)/nmsg_crp.c $(BASEDIR)/msg_crp.h: $(TOOLS_DIR)/msgbind$x $(RESFILE)
 	$(TOOLS_DIR)/msgbind $(RESFILE) msg_crp $(OS_ID) $(PACKAGE) $(LOCALE) $(BASEDIR)
 
@@ -395,7 +394,6 @@ $(ARJ_DIR)/arj$x: $(ARJ_OBJS) \
 	rm -f $(BASEDIR)/help.arj
 	TZ=UTC0 $(ARJ_FOR_BUILD_PROG) a $(BASEDIR)/help.arj -+ -t1f -2d -e -jm -jh65535 -jt -hdo$(ARJ_TIMESTAMP) $(RES_DIR)/$(LOCALE)/arj?.txt
 	$(TOOLS_DIR)/join $(ARJ_DIR)/arj$x $(BASEDIR)/help.arj
-	$(TOOLS_DIR)/postproc $@
 
 $(BASEDIR)/fmsg_arj.c $(BASEDIR)/imsg_arj.c $(BASEDIR)/nmsg_arj.c \
 $(BASEDIR)/msg_arj.h: $(TOOLS_DIR)/msgbind$x $(RESFILE)
@@ -416,7 +414,6 @@ $(REARJ_DIR)/rearj$x: $(REARJ_OBJS) \
 		      $(TOOLS_DIR)/postproc$x
 	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(REARJ_OBJS) $(LIBS)
 	$(STRIP) $@
-	$(TOOLS_DIR)/postproc $@
 
 $(BASEDIR)/fmsg_rej.c $(BASEDIR)/imsg_rej.c $(BASEDIR)/nmsg_rej.c \
 $(BASEDIR)/msg_rej.h: $(TOOLS_DIR)/msgbind$x $(RESFILE)

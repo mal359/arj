@@ -8,7 +8,9 @@
 #ifndef ARJ_PROC_INCLUDED
 #define ARJ_PROC_INCLUDED
 
+#ifndef _AIX51
 #include <stdint.h>
+#endif
 
 /* Helper macros */
 

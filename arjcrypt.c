@@ -329,6 +329,13 @@ int main()
 }
 #endif
 
+#if defined(__APPLE__)
+int main()
+{
+ return(0);
+}
+#endif
+
 /* External entry */
 
 #if TARGET==DOS

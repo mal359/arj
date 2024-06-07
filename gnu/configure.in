@@ -67,6 +67,11 @@ gnu*|linux*|k*bsd*)
         DLL_FLAGS="-shared -export-dynamic"
         LD_STRIP="gnu/stripgcc.lnk"
 	;;
+darwin*)
+	# not ELF
+	DLL_EXT=".dylib"
+	DLL_FLAGS=""
+	;;
 interix3*)
 	# not ELF
 	DLL_FLAGS="-shared"

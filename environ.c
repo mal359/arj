@@ -12,7 +12,6 @@
 #include <conio.h>
 #include <io.h>
 #include <process.h>
-#include <sys/wait.h>
 #endif
 
 #include <fcntl.h>
@@ -60,7 +59,7 @@
   #include <sys/ioctl.h>
   #include <sys/statfs.h>
   #include <sys/statvfs.h>
- #elif defined(__FreeBSD__)||defined(__NetBSD__)||defined(__OpenBSD__)||defined(__DragonFly__)
+ #elif defined(__FreeBSD__)||defined(__NetBSD__)||defined(__OpenBSD__)||defined(__DragonFly__)||defined(__APPLE__)
   #include <sys/param.h>
   #include <sys/mount.h>
  #elif defined(__QNXNTO__)||defined(__INTERIX)

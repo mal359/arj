@@ -13,7 +13,6 @@
 /* ASR fix 02/05/2003: need that regardless of COLOR_OUTPUT to support -jp
    correctly */
 #if SFX_LEVEL>=ARJ
- #define CUSTOM_PRINTF
  #define CHUNK_SIZE               512    /* Size of the output block */
  #define CHUNK_THRESHOLD (CHUNK_SIZE-256) /* Safety bound */
 #endif

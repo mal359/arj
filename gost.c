@@ -33,7 +33,7 @@ void calc_gost_pattern()
 #define _dptr(i) (dptr[  (i)])
 #endif
 
-unsigned long gost_term(unsigned long data)
+uint32_t gost_term(uint32_t data)
 {
  unsigned char *dptr;
  unsigned short p1, p2;

@@ -60,10 +60,10 @@
   #include <sys/ioctl.h>
   #include <sys/statfs.h>
   #include <sys/statvfs.h>
- #elif defined(__FreeBSD__)||defined(__NetBSD__)
+ #elif defined(__FreeBSD__)||defined(__NetBSD__)||defined(__OpenBSD__)||defined(__DragonFly__)
   #include <sys/param.h>
   #include <sys/mount.h>
- #elif defined(__QNXNTO__)
+ #elif defined(__QNXNTO__)||defined(__INTERIX)
   #include <sys/statvfs.h>
  #else
   #include <sys/statfs.h>
@@ -2292,7 +2292,7 @@ unsigned long file_getfree(char *name)
   else
    return((LONG_MAX/(spclu*bps)<fclu)?LONG_MAX:spclu*bps*fclu);
  #elif TARGET==UNIX
-  #if defined(__QNXNTO__)||defined(__sco__)||defined(SUNOS)
+  #if defined(__QNXNTO__)||defined(__sco__)||defined(SUNOS)||defined(__INTERIX)
    struct statvfs vfs;
 
    if(statvfs(name, &vfs)==-1)
@@ -3808,7 +3808,9 @@ int reset_drive(char *name)
  #elif TARGET==WIN32
   return(0);
  #elif TARGET==UNIX
+ #   ifndef __INTERIX
   sync();
+ #   endif
   return(0);
  #endif
 }

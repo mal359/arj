@@ -1,3 +1,7 @@
+2006-06-13  Boris B. Rudakov (BBR)  <bbr@perm.raid.ru>
+
+	*  environ.c: Interix 3.5 (SFU) port
+
 2005-06-23  Andrew Belov  <andrew_belov@newmail.ru>
 
 	*  3.10/2.78 rev. 22: tag "arj-3_10_22".

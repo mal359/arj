@@ -10,6 +10,8 @@
 #ifdef ELF_EXECUTABLES
  #ifdef __QNXNTO__
     #include <libelf.h>
+ #elif __OpenBSD__
+    #include <sys/exec_elf.h>
  #else
     #include <elf.h>
  #endif /* __QNXNTO__ */

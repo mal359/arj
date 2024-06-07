@@ -661,6 +661,8 @@ int vcprintf(int ccode, FMSG *fmt, va_list args)
      num=va_arg(args, int);             /* num=va_arg(args, short);      */
     else
      num=va_arg(args, int);             /* num=va_arg(args, unsigned short);*/
+#elif defined(__sun__)
+     num=va_arg(args, int);
 #else
     if(flags&SIGN)
      num=va_arg(args, short);

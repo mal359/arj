@@ -73,7 +73,8 @@ static int pp_default(FILE *stream)
   if((bytes_read=fread(buf, 1, PROC_BLOCK_SIZE, stream))==0)
   {
    printf("Patch not found\n");
-   return(POSTPROC_ERL_BAD_EXE);
+   /*return(POSTPROC_ERL_BAD_EXE);*/
+   break;
   }
   bytes_read-=rp_len;
   pb_ptr=buf;

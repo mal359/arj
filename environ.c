@@ -62,7 +62,7 @@
  #elif defined(__FreeBSD__)||defined(__NetBSD__)||defined(__OpenBSD__)||defined(__DragonFly__)||defined(__APPLE__)
   #include <sys/param.h>
   #include <sys/mount.h>
- #elif defined(__QNXNTO__)||defined(__INTERIX)
+ #elif defined(__QNXNTO__)||defined(__INTERIX)||defined(__HAIKU__)
   #include <sys/statvfs.h>
  #else
   #include <sys/statfs.h>
@@ -2291,7 +2291,7 @@ unsigned long file_getfree(char *name)
   else
    return((LONG_MAX/(spclu*bps)<fclu)?LONG_MAX:spclu*bps*fclu);
  #elif TARGET==UNIX
-  #if defined(__QNXNTO__)||defined(__sco__)||defined(SUNOS)||defined(__INTERIX)
+  #if defined(__QNXNTO__)||defined(__sco__)||defined(SUNOS)||defined(__INTERIX)||defined(__HAIKU__)
    struct statvfs vfs;
 
    if(statvfs(name, &vfs)==-1)

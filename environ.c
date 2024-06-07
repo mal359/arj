@@ -12,6 +12,7 @@
 #include <conio.h>
 #include <io.h>
 #include <process.h>
+#include <sys/wait.h>
 #endif
 
 #include <fcntl.h>

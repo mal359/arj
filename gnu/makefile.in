@@ -401,6 +401,7 @@ $(BASEDIR)/fmsg_arj.c $(BASEDIR)/imsg_arj.c $(BASEDIR)/nmsg_arj.c \
 $(BASEDIR)/msg_arj.h: $(TOOLS_DIR)/msgbind$x $(RESFILE)
 	$(TOOLS_DIR)/msgbind $(RESFILE) msg_arj $(OS_ID) $(PACKAGE) $(LOCALE) $(BASEDIR)
 
+sed -i 's|_""|\\""|' $(BASEDIR)/fmsg_arj.c
 #
 # REARJ utility
 #

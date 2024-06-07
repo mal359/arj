@@ -7,6 +7,7 @@
  *
  */
 
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <signal.h>
 
@@ -1169,7 +1170,7 @@ int main(int argc, char *argv[])
      if(strlen(tmp_ptr)<=121)
       tmp_ptr[0]='\0';
      else if(tmp_ptr[120]==' ')
-      safe_strcpy(tmp_ptr, tmp_ptr+121);
+      memmove(tmp_ptr, tmp_ptr+121, strlen(tmp_ptr+121)+1);
     }
     if(cmd==ARJ_CMD_ORDER&&strpbrk(tmp_ptr, wildcard_pattern)!=NULL)
      error(M_ORDER_WILDCARD);

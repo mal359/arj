@@ -1634,6 +1634,7 @@ $(BASEDIR)\arj\externs.obj: externs.c
 $(BASEDIR)\fmsg_arj.c $(BASEDIR)\imsg_arj.c $(BASEDIR)\nmsg_arj.c: $(BASEDIR)\tools\$(MSGBIND) $(RESFILE)
  $(BASEDIR)\tools\msgbind $(RESFILE) msg_arj $(OS_ID) $(PACKAGE) $(LOCALE) $(BASEDIR)
 
+sed -i 's|_""|\\""|' $(BASEDIR)/fmsg_arj.c
 #
 # REARJ utility
 #
